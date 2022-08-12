@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.6 on darwin)" generated="20220812 22:07:13.053" rpa="false" schemaversion="3">
+<suite id="s1" name="Youtube" source="/Users/seyma.sagbas/RobotFramework/script/Tests/Youtube.robot">
+<test id="s1-t1" name="User should be able to share Youtube video link" line="21">
+<kw name="Open the browser" library="Common" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220812 22:07:13.841" level="INFO">Opening browser 'chrome' to base url 'https://www.google.com/'.</msg>
+<status status="PASS" starttime="20220812 22:07:13.841" endtime="20220812 22:07:17.797"/>
+</kw>
+<status status="PASS" starttime="20220812 22:07:13.841" endtime="20220812 22:07:17.797"/>
+</kw>
+<kw name="When User goes to Youtube link" library="YoutubeShare">
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${YoutubePage}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220812 22:07:17.798" level="INFO">Opening url 'https://www.youtube.com/watch?v=zIePW7DrcD0'</msg>
+<status status="PASS" starttime="20220812 22:07:17.798" endtime="20220812 22:07:19.536"/>
+</kw>
+<status status="PASS" starttime="20220812 22:07:17.797" endtime="20220812 22:07:19.536"/>
+</kw>
+<kw name="And User accepts cookies" library="YoutubeShare">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${Accept_Cookies_Button}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220812 22:07:19.537" endtime="20220812 22:07:20.548"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Accept_Cookies_Button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220812 22:07:20.549" level="INFO">Clicking element 'xpath=//*[@id="content"]/div[2]/div[6]/div[1]/ytd-button-renderer[2]/a'.</msg>
+<status status="PASS" starttime="20220812 22:07:20.548" endtime="20220812 22:07:20.698"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${Video_Title}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220812 22:07:20.699" endtime="20220812 22:07:22.176"/>
+</kw>
+<status status="PASS" starttime="20220812 22:07:19.536" endtime="20220812 22:07:22.176"/>
+</kw>
+<kw name="And User clicks on share button" library="YoutubeShare">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${Share_Button}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220812 22:07:22.177" endtime="20220812 22:07:22.951"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Share_Button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220812 22:07:22.951" level="INFO">Clicking element 'xpath=//*[@id="top-level-buttons-computed"]/ytd-button-renderer[1]/a'.</msg>
+<status status="PASS" starttime="20220812 22:07:22.951" endtime="20220812 22:07:23.127"/>
+</kw>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${dialog}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220812 22:07:23.211" level="INFO">Element 'xpath=//tp-yt-paper-dialog' is displayed.</msg>
+<status status="PASS" starttime="20220812 22:07:23.127" endtime="20220812 22:07:23.211"/>
+</kw>
+<status status="PASS" starttime="20220812 22:07:22.177" endtime="20220812 22:07:23.211"/>
+</kw>
+<kw name="And User copies the Youtube link" library="YoutubeShare">
+<kw name="Wait Until Element Is Enabled" library="SeleniumLibrary">
+<arg>${Copy_Button}</arg>
+<doc>Waits until the element ``locator`` is enabled.</doc>
+<status status="PASS" starttime="20220812 22:07:23.212" endtime="20220812 22:07:23.268"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Copy_Button}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220812 22:07:23.268" level="INFO">Clicking element 'xpath=//*[@id="copy-button"]/a'.</msg>
+<status status="PASS" starttime="20220812 22:07:23.268" endtime="20220812 22:07:23.325"/>
+</kw>
+<status status="PASS" starttime="20220812 22:07:23.211" endtime="20220812 22:07:23.326"/>
+</kw>
+<kw name="Then User pastes the link on the browser" library="YoutubeShare">
+<kw name="Get Clipboard Value" library="RPA.Desktop">
+<var>${text}</var>
+<doc>Read current value from system clipboard.</doc>
+<msg timestamp="20220812 22:07:23.330" level="INFO">${text} = https://youtu.be/zIePW7DrcD0</msg>
+<status status="PASS" starttime="20220812 22:07:23.326" endtime="20220812 22:07:23.330"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Copied text: ${text}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220812 22:07:23.331" level="INFO">Copied text: https://youtu.be/zIePW7DrcD0</msg>
+<status status="PASS" starttime="20220812 22:07:23.330" endtime="20220812 22:07:23.331"/>
+</kw>
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<arg>window.open(arguments[0]);</arg>
+<arg>ARGUMENTS</arg>
+<arg>${text}</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220812 22:07:23.331" level="INFO">Executing JavaScript:
+window.open(arguments[0]);
+By using argument:
+'https://youtu.be/zIePW7DrcD0'</msg>
+<status status="PASS" starttime="20220812 22:07:23.331" endtime="20220812 22:07:23.368"/>
+</kw>
+<kw name="Wait Until Page Contains" library="SeleniumLibrary">
+<arg>${Video_Title}</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" starttime="20220812 22:07:23.368" endtime="20220812 22:07:23.412"/>
+</kw>
+<status status="PASS" starttime="20220812 22:07:23.326" endtime="20220812 22:07:23.412"/>
+</kw>
+<kw name="Close the browser" library="Common" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220812 22:07:23.413" endtime="20220812 22:07:23.560"/>
+</kw>
+<status status="PASS" starttime="20220812 22:07:23.412" endtime="20220812 22:07:23.560"/>
+</kw>
+<doc>This test is about Youtube link sharing</doc>
+<status status="PASS" starttime="20220812 22:07:13.840" endtime="20220812 22:07:23.560"/>
+</test>
+<doc>This is a test suite about Youtube link sharing</doc>
+<status status="PASS" starttime="20220812 22:07:13.054" endtime="20220812 22:07:23.561"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Youtube">Youtube</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
